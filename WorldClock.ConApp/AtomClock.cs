@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿/* Klasse: 8ABIF 
+ * Katalognummer: ad160270 
+ * Name: Hlavacek Martin
+ * Datum: 06.04.2020*/
+
+using System;
 using System.Timers;
 
 namespace WorldClock.ConApp
 {
-    class AtomClock : Clock
+    public class AtomClock : Clock
     {
-        private AtomClock instance;
+        private static AtomClock instance;
         private Timer timer;
 
         public event EventHandler<DateTime> TimeSyncPending;
 
-        public AtomClock Instance
+        public static AtomClock Instance
         {
             get
             {
@@ -26,16 +29,22 @@ namespace WorldClock.ConApp
 
         private AtomClock()
         {
-            Location = "Austria";
+            Location = "Austria (Atomuhr)";
             Offset = 0;
-            DateAndTime = DateTime.Now;
             timer = new Timer(250);
+            timer.Start();
             timer.Elapsed += Timer_Elapsed;
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            DateAndTime = DateTime.Now;
             TimeSyncPending?.Invoke(this, DateAndTime);
+        }
+
+        public void Stop()
+        {
+            timer.Stop();
         }
     }
 }
