@@ -25,20 +25,26 @@ namespace WorldClock.ConApp
             clocks.Add(new LocationClock(2.5, "Afghanistan"));
             clocks.Add(new LocationClock(0, "Kairo"));
 
-            while (Console.ReadKey().Key != ConsoleKey.X)
+            while (!Console.KeyAvailable)
             {
                 Console.WriteLine("**********WorldClock***********");
                 Console.WriteLine("******Von Hlavacek Martin******");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(AtomClock.Instance.ToString());
+                Console.ResetColor();
+                Console.WriteLine();
                 foreach (var item in clocks)
                 {
                     Console.WriteLine(item.ToString());
                 }
-
+                Console.WriteLine();
+                Console.WriteLine("Programm mit beliebiger Taste beenden ...");
                 Thread.Sleep(1000);
                 Console.Clear();
             }
             AtomClock.Instance.Stop();
+            Console.ReadLine();
         }
     }
 }
