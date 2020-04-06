@@ -26,9 +26,16 @@ namespace WorldClock.ConApp
 
         private AtomClock()
         {
+            Location = "Austria";
+            Offset = 0;
+            DateAndTime = DateTime.Now;
             timer = new Timer(250);
+            timer.Elapsed += Timer_Elapsed;
         }
 
-
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            TimeSyncPending?.Invoke(this, DateAndTime);
+        }
     }
 }

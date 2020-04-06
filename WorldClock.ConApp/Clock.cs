@@ -10,11 +10,5 @@ namespace WorldClock.ConApp
         public string Location { get; set; }
         public int Offset { get ; set; }
         public DateTime DateAndTime { get ; set ; }
-
-        public delegate DateTime CalcDateAndTime(DateTime dateTime);
-
-        public Clock()
-        {
-        }
     }
 }
