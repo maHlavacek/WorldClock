@@ -14,6 +14,15 @@ namespace WorldClock.ConApp
         public double Offset { get ; set; }
         public DateTime DateAndTime { get; set; }
 
+        public Clock()
+        {
+        }
+        public Clock(double offset, string location)
+        {
+            Offset = offset;
+            Location = location;
+        }
+
         public override string ToString()
         {
             return Location.PadRight(30) + " " + DateAndTime.ToString("ddd.  dd.MMM.yyyy      HH:mm:ss");

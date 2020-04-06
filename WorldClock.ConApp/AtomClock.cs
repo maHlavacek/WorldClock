@@ -27,9 +27,9 @@ namespace WorldClock.ConApp
             }
         }
 
-        private AtomClock()
+        private AtomClock() : base()
         {
-            Location = "Austria (Atomuhr)";
+            Location = "Austria";
             Offset = 0;
             timer = new Timer(250);
             timer.Start();
@@ -46,5 +46,12 @@ namespace WorldClock.ConApp
         {
             timer.Stop();
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + " Atomuhr ";
+        }
+
+
     }
 }

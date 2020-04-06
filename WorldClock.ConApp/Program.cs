@@ -40,7 +40,7 @@ namespace WorldClock.ConApp
                 }
                 Console.WriteLine();
                 Console.WriteLine("Programm mit beliebiger Taste beenden ...");
-                Thread.Sleep(1000);
+                Thread.Sleep(245);
                 Console.Clear();
             }
             AtomClock.Instance.Stop();

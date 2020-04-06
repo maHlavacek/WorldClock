@@ -10,10 +10,15 @@ namespace WorldClock.ConApp
     public class LocationClock : Clock
     {
         public LocationClock(double offset, string location)
+            :base(offset, location)
         {
-            Location = location;
-            Offset = offset;
+
             AtomClock.Instance.TimeSyncPending += OnTimeSyncPending;
+        }
+        public LocationClock()
+            :base()
+        {
+
         }
 
         private void OnTimeSyncPending(object sender, DateTime e)
